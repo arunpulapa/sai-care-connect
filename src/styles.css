@@ -61,7 +61,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
   
   --font-sans: "Plus Jakarta Sans", sans-serif;
-  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-display: "Space Grotesk", "Plus Jakarta Sans", sans-serif;
 }
 
 :root {
@@ -72,19 +72,21 @@
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
+  /* Brand primary = Garooda orange (was slate — this mismatch was the root
+     cause of components rendering navy while the page reads orange). */
+  --primary: oklch(0.646 0.222 41.116);
+  --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
   --muted: oklch(0.968 0.007 247.896);
   --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --accent: oklch(0.962 0.045 70);
+  --accent-foreground: oklch(0.5 0.19 38);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(0.929 0.013 255.508);
   --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --ring: oklch(0.646 0.222 41.116);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -107,8 +109,8 @@
   --card-foreground: oklch(0.984 0.003 247.858);
   --popover: oklch(0.208 0.042 265.755);
   --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
+  --primary: oklch(0.646 0.222 41.116);
+  --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.279 0.041 260.031);
   --secondary-foreground: oklch(0.984 0.003 247.858);
   --muted: oklch(0.279 0.041 260.031);
@@ -155,16 +157,16 @@
 /* Premium Visual Custom Classes */
 .bg-grid-pattern {
   background-size: 30px 30px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
 }
 
 .premium-glass {
-  background: rgba(13, 20, 35, 0.45);
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.07);
 }
 
 .premium-glass-hover {
@@ -172,20 +174,21 @@
 }
 
 .premium-glass-hover:hover {
-  background: rgba(16, 185, 129, 0.03);
-  border-color: rgba(16, 185, 129, 0.22);
-  box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.08);
+  background: rgba(249, 115, 22, 0.04);
+  border-color: rgba(249, 115, 22, 0.28);
+  box-shadow: 0 20px 40px -15px rgba(249, 115, 22, 0.12);
   transform: translateY(-3px);
 }
 
-.text-gradient-emerald {
-  background: linear-gradient(135deg, #ffffff 30%, #a7f3d0 70%, #34d399 100%);
+.text-gradient-orange {
+  background: linear-gradient(135deg, #ea580c 0%, #f97316 50%, #fb923c 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .shimmer-bg {
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.03), transparent);
   background-size: 200% 100%;
   animation: shimmer-anim 3s infinite;
 }
@@ -193,4 +196,113 @@
 @keyframes shimmer-anim {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
+}
+
+/* Gentle floating motion for hero live cards */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+.animate-float-y {
+  animation: float-y 4.5s ease-in-out infinite;
+}
+.animate-float-y-slow {
+  animation: float-y 6s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+/* Live progress bar pulse */
+@keyframes scan-progress {
+  0%, 100% { opacity: 0.55; filter: brightness(0.9); }
+  50% { opacity: 1; filter: brightness(1.25); }
+}
+
+/* ─── Redesign design language ─────────────────────────────── */
+
+/* Display headings: tighter, more characterful */
+h1, h2, h3 {
+  letter-spacing: -0.03em;
+}
+
+/* Hand-marker highlight behind a word (orange swipe) */
+.marker-highlight {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+.marker-highlight::after {
+  content: "";
+  position: absolute;
+  left: -0.1em;
+  right: -0.1em;
+  bottom: 0.08em;
+  height: 0.42em;
+  background: linear-gradient(180deg, rgba(249, 115, 22, 0) 0%, rgba(249, 115, 22, 0.35) 100%);
+  z-index: -1;
+  transform: skewX(-4deg);
+  border-radius: 2px;
+}
+
+/* Section eyebrow with orange marker bar */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ea580c;
+}
+.eyebrow::before {
+  content: "";
+  width: 1.6rem;
+  height: 2px;
+  background: #f97316;
+  border-radius: 2px;
+}
+
+/* Dark charcoal section — subtle warm texture (logo-black feel) */
+.section-dark {
+  background:
+    radial-gradient(120% 120% at 100% 0%, rgba(249, 115, 22, 0.10) 0%, transparent 45%),
+    radial-gradient(90% 90% at 0% 100%, rgba(249, 115, 22, 0.06) 0%, transparent 50%),
+    #131313;
+}
+
+/* Brand marquee */
+@keyframes marquee-x {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee-x 28s linear infinite;
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+/* ─── Unified layout system ─────────────────────────────────
+ * Every section on the page shares ONE centered content column and a
+ * consistent vertical rhythm. This is what keeps sections visually
+ * connected — their left/right edges line up as you scroll.
+ */
+.section-shell {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem; /* 1280px — the single content width for the whole site */
+}
+/* Anchor offset so nav jumps clear the sticky header instead of hiding under it */
+.section-anchor {
+  scroll-margin-top: 6rem;
+}
+
+/* Big index numeral for editorial sections */
+.section-index {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(249, 115, 22, 0.35);
 }
