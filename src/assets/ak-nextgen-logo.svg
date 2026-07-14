@@ -1,0 +1,25 @@
+<svg viewBox="0 0 560 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AK NextGen Solutions">
+  <defs>
+    <linearGradient id="akg" x1="70" y1="70" x2="480" y2="460" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#33D4F1"/>
+      <stop offset="0.5" stop-color="#1E86E6"/>
+      <stop offset="1" stop-color="#1740C6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left "A" — rounded ribbon -->
+  <path d="M104 402 L196 148 C204 126 226 126 234 148 L300 330"
+        stroke="url(#akg)" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- A crossbar / loop -->
+  <path d="M156 312 C196 288 244 288 282 312"
+        stroke="url(#akg)" stroke-width="42" stroke-linecap="round"/>
+
+  <!-- Right "X" blades -->
+  <path d="M336 172 L452 402" stroke="url(#akg)" stroke-width="46" stroke-linecap="round"/>
+  <path d="M452 172 L336 402" stroke="url(#akg)" stroke-width="46" stroke-linecap="round"/>
+
+  <!-- top-right triangle accent -->
+  <path d="M438 138 L494 138 L494 196 Z" fill="url(#akg)"/>
+  <!-- bottom-center triangle accent -->
+  <path d="M394 300 L446 400 L342 400 Z" fill="url(#akg)"/>
+</svg>

@@ -23,7 +23,6 @@ import {
   BatteryCharging,
   MapPin,
   Instagram,
-  Globe,
   Phone as PhoneIcon,
   CheckCircle2,
   IndianRupee,
@@ -36,11 +35,12 @@ import {
   Navigation,
   ShieldCheck,
   Sparkles,
-  Menu,
   X,
 } from "lucide-react";
 import garoodaLogo from "../assets/garooda_logo.jpeg";
 import mobileHero from "../assets/mobile-hero.jpg";
+import akNextgenLogo from "../assets/logo_no_bg.png";
+import { SiteNavbar } from "../components/layout/SiteNavbar";
 
 interface IndexSearch {
   tech?: string | boolean;
@@ -71,7 +71,7 @@ const SHOP_PHONE = "918125019015";
 
 // Instagram reels (from prompt.txt), ordered to match videoItems:
 // OCA Machine · iPhone Repair · TBK Machine · Before / After
-const REEL_IDS = ["DRpM1chEeE6", "DZcxVnmxMjJ", "DUDzap7ATtN", "DXmYzjVEQn6"];
+const REEL_IDS = ["DaVhu3QxkcS", "DZcxVnmxMjJ", "DUDzap7ATtN", "DXmYzjVEQn6"];
 
 type Lang = "en" | "te";
 
@@ -148,7 +148,10 @@ const T = {
     whyLabel: "Why Garooda Mobiles",
     whyH2: "Why Customers Trust Us",
     whyItems: [
-      { title: "Professional OCA Machine Repairs", desc: "Factory-grade glass lamination for a flawless finish." },
+      {
+        title: "Professional OCA Machine Repairs",
+        desc: "Factory-grade glass lamination for a flawless finish.",
+      },
       { title: "Genuine Spare Parts", desc: "100% original components — never cheap copies." },
       { title: "Experienced Technicians", desc: "3+ years of hands-on expertise on every brand." },
       { title: "Data Safety Priority", desc: "Your photos & files stay private and protected." },
@@ -160,14 +163,7 @@ const T = {
     iphoneH2: "iPhone Repair Specialists in Tadepalligudem",
     iphoneSubtitle:
       "From a cracked back glass to a tricky Face ID fault — we restore every iPhone to factory perfection with genuine parts.",
-    iphoneServices: [
-      "Back Glass",
-      "Battery",
-      "Display",
-      "Face ID",
-      "Charging Port",
-      "Motherboard",
-    ],
+    iphoneServices: ["Back Glass", "Battery", "Display", "Face ID", "Charging Port", "Motherboard"],
     iphoneCta: "Book iPhone Repair",
     // Reviews
     reviewsLabel: "Loved by Tadepalligudem",
@@ -175,12 +171,36 @@ const T = {
     reviewsSubtitle: "Real reviews from real customers across Tadepalligudem.",
     reviewsCta: "Read All Reviews on Google",
     reviewItems: [
-      { name: "Ravi Teja", device: "iPhone 13 · Screen", text: "Cracked my iPhone 13 screen badly. Garooda fixed it in 2 hours with an original display. Looks brand new!" },
-      { name: "Sneha P.", device: "Samsung S22 · Battery", text: "My battery was draining fast. They replaced it the same day and even did free doorstep pickup. Highly recommend!" },
-      { name: "Karthik M.", device: "OnePlus 9 · Charging Port", text: "Fair price, no hidden costs, and they kept me updated on WhatsApp the whole time. Very professional." },
-      { name: "Lakshmi N.", device: "iPhone 12 · Back Glass", text: "Back glass replacement looked impossible elsewhere. Garooda did it perfectly — genuine and trustworthy." },
-      { name: "Anil Kumar", device: "Redmi Note 11 · Display", text: "Best mobile repair in Tadepalligudem. Professional team, and they truly care about your data safety." },
-      { name: "Divya R.", device: "Apple Watch · Glass", text: "Even repaired my Apple Watch when others refused. Quick, honest, and friendly service throughout." },
+      {
+        name: "Ravi Teja",
+        device: "iPhone 13 · Screen",
+        text: "Cracked my iPhone 13 screen badly. Garooda fixed it in 2 hours with an original display. Looks brand new!",
+      },
+      {
+        name: "Sneha P.",
+        device: "Samsung S22 · Battery",
+        text: "My battery was draining fast. They replaced it the same day and even did free doorstep pickup. Highly recommend!",
+      },
+      {
+        name: "Karthik M.",
+        device: "OnePlus 9 · Charging Port",
+        text: "Fair price, no hidden costs, and they kept me updated on WhatsApp the whole time. Very professional.",
+      },
+      {
+        name: "Lakshmi N.",
+        device: "iPhone 12 · Back Glass",
+        text: "Back glass replacement looked impossible elsewhere. Garooda did it perfectly — genuine and trustworthy.",
+      },
+      {
+        name: "Anil Kumar",
+        device: "Redmi Note 11 · Display",
+        text: "Best mobile repair in Tadepalligudem. Professional team, and they truly care about your data safety.",
+      },
+      {
+        name: "Divya R.",
+        device: "Apple Watch · Glass",
+        text: "Even repaired my Apple Watch when others refused. Quick, honest, and friendly service throughout.",
+      },
     ],
     // Location / Map
     mapLabel: "Visit Our Store",
@@ -189,7 +209,8 @@ const T = {
     mapDirections: "Get Directions",
     // Trust builder
     trustBuilderQ: "What Happens If We Can't Repair It?",
-    trustBuilderA: "No repair, no charges. We only charge after a successful repair — that's our promise to you.",
+    trustBuilderA:
+      "No repair, no charges. We only charge after a successful repair — that's our promise to you.",
     // Device cards
     phones: "📱 Phones",
     phonesDesc: "iPhone, Samsung, OnePlus, Xiaomi & all Android brands",
@@ -222,7 +243,8 @@ const T = {
     expressWalkin: "Walk In",
     expressWalkinSub: "Come straight to our Opp-Chennai Shopping Mall shop — we start right away",
     doorstepPickup: "Free Doorstep Pickup",
-    doorstepPickupSub: "We'll pick it up from your home — free of charge, within Tadepalligudem only",
+    doorstepPickupSub:
+      "We'll pick it up from your home — free of charge, within Tadepalligudem only",
     nameLabel: "Your Name",
     phoneLabel: "Your WhatsApp Number",
     formError: "Please fill in all fields so we can prepare your repair quote.",
@@ -267,7 +289,8 @@ const T = {
     // CTA Banner
     ctaTagline: "Free Pickup — Tadepalligudem Only",
     ctaH2: "Book Your Repair Today",
-    ctaBody: "Call us or WhatsApp and we'll pick up your device from your doorstep — absolutely free, anywhere in Tadepalligudem.",
+    ctaBody:
+      "Call us or WhatsApp and we'll pick up your device from your doorstep — absolutely free, anywhere in Tadepalligudem.",
     ctaCall: "Call Now",
     ctaWhatsapp: "WhatsApp Us",
     // Footer
@@ -389,7 +412,10 @@ const T = {
     whyLabel: "ఎందుకు Garooda Mobiles",
     whyH2: "కస్టమర్లు మమ్మల్ని ఎందుకు నమ్ముతారు",
     whyItems: [
-      { title: "ప్రొఫెషనల్ OCA మెషీన్ రిపేర్లు", desc: "పరిపూర్ణ ఫినిష్ కోసం ఫ్యాక్టరీ-గ్రేడ్ గ్లాస్ లామినేషన్." },
+      {
+        title: "ప్రొఫెషనల్ OCA మెషీన్ రిపేర్లు",
+        desc: "పరిపూర్ణ ఫినిష్ కోసం ఫ్యాక్టరీ-గ్రేడ్ గ్లాస్ లామినేషన్.",
+      },
       { title: "అసలు విడిభాగాలు", desc: "100% ఒరిజినల్ భాగాలు — చౌక కాపీలు ఎప్పటికీ కాదు." },
       { title: "అనుభవజ్ఞులైన టెక్నీషియన్లు", desc: "ప్రతి బ్రాండ్‌పై 3+ సంవత్సరాల అనుభవం." },
       { title: "డేటా భద్రత ప్రాధాన్యం", desc: "మీ ఫోటోలు & ఫైళ్ళు సురక్షితంగా, గోప్యంగా ఉంటాయి." },
@@ -416,12 +442,36 @@ const T = {
     reviewsSubtitle: "తాడేపల్లిగూడెం అంతటా నిజమైన కస్టమర్ల నిజమైన రివ్యూలు.",
     reviewsCta: "Google లో అన్ని రివ్యూలు చదవండి",
     reviewItems: [
-      { name: "రవి తేజ", device: "iPhone 13 · స్క్రీన్", text: "నా iPhone 13 స్క్రీన్ బాగా పగిలింది. Garooda 2 గంటల్లో ఒరిజినల్ డిస్‌ప్లేతో సరిచేశారు. కొత్తదానిలా ఉంది!" },
-      { name: "స్నేహ పి.", device: "Samsung S22 · బ్యాటరీ", text: "నా బ్యాటరీ వేగంగా అయిపోతోంది. అదే రోజు మార్చారు, ఉచిత డోర్‌స్టెప్ పికప్ కూడా చేశారు. తప్పక సిఫార్సు చేస్తాను!" },
-      { name: "కార్తీక్ ఎం.", device: "OnePlus 9 · చార్జింగ్ పోర్ట్", text: "న్యాయమైన ధర, దాచిన ఖర్చులు లేవు, WhatsApp లో అప్‌డేట్‌లు ఇచ్చారు. చాలా ప్రొఫెషనల్." },
-      { name: "లక్ష్మి ఎన్.", device: "iPhone 12 · బ్యాక్ గ్లాస్", text: "బ్యాక్ గ్లాస్ మార్పిడి వేరే చోట అసాధ్యంగా అనిపించింది. Garooda పరిపూర్ణంగా చేశారు — నమ్మదగినవారు." },
-      { name: "అనిల్ కుమార్", device: "Redmi Note 11 · డిస్‌ప్లే", text: "తాడేపల్లిగూడెంలో అత్యుత్తమ మొబైల్ రిపేర్. ప్రొఫెషనల్ టీం, డేటా భద్రత గురించి నిజంగా శ్రద్ధ చూపుతారు." },
-      { name: "దివ్య ఆర్.", device: "Apple Watch · గ్లాస్", text: "ఇతరులు తిరస్కరించినా నా Apple Watch ను కూడా సరిచేశారు. వేగంగా, నిజాయితీగా, స్నేహపూర్వకంగా." },
+      {
+        name: "రవి తేజ",
+        device: "iPhone 13 · స్క్రీన్",
+        text: "నా iPhone 13 స్క్రీన్ బాగా పగిలింది. Garooda 2 గంటల్లో ఒరిజినల్ డిస్‌ప్లేతో సరిచేశారు. కొత్తదానిలా ఉంది!",
+      },
+      {
+        name: "స్నేహ పి.",
+        device: "Samsung S22 · బ్యాటరీ",
+        text: "నా బ్యాటరీ వేగంగా అయిపోతోంది. అదే రోజు మార్చారు, ఉచిత డోర్‌స్టెప్ పికప్ కూడా చేశారు. తప్పక సిఫార్సు చేస్తాను!",
+      },
+      {
+        name: "కార్తీక్ ఎం.",
+        device: "OnePlus 9 · చార్జింగ్ పోర్ట్",
+        text: "న్యాయమైన ధర, దాచిన ఖర్చులు లేవు, WhatsApp లో అప్‌డేట్‌లు ఇచ్చారు. చాలా ప్రొఫెషనల్.",
+      },
+      {
+        name: "లక్ష్మి ఎన్.",
+        device: "iPhone 12 · బ్యాక్ గ్లాస్",
+        text: "బ్యాక్ గ్లాస్ మార్పిడి వేరే చోట అసాధ్యంగా అనిపించింది. Garooda పరిపూర్ణంగా చేశారు — నమ్మదగినవారు.",
+      },
+      {
+        name: "అనిల్ కుమార్",
+        device: "Redmi Note 11 · డిస్‌ప్లే",
+        text: "తాడేపల్లిగూడెంలో అత్యుత్తమ మొబైల్ రిపేర్. ప్రొఫెషనల్ టీం, డేటా భద్రత గురించి నిజంగా శ్రద్ధ చూపుతారు.",
+      },
+      {
+        name: "దివ్య ఆర్.",
+        device: "Apple Watch · గ్లాస్",
+        text: "ఇతరులు తిరస్కరించినా నా Apple Watch ను కూడా సరిచేశారు. వేగంగా, నిజాయితీగా, స్నేహపూర్వకంగా.",
+      },
     ],
     // Location / Map
     mapLabel: "మా షాప్‌ను సందర్శించండి",
@@ -430,7 +480,8 @@ const T = {
     mapDirections: "దిశలు పొందండి",
     // Trust builder
     trustBuilderQ: "మేము సరిచేయలేకపోతే ఏమవుతుంది?",
-    trustBuilderA: "మరమ్మత్తు లేదు, ఛార్జీ లేదు. విజయవంతమైన మరమ్మత్తు తర్వాతే మేము ఛార్జ్ చేస్తాం — ఇది మీకు మా వాగ్దానం.",
+    trustBuilderA:
+      "మరమ్మత్తు లేదు, ఛార్జీ లేదు. విజయవంతమైన మరమ్మత్తు తర్వాతే మేము ఛార్జ్ చేస్తాం — ఇది మీకు మా వాగ్దానం.",
     // Device cards
     phones: "📱 ఫోన్లు",
     phonesDesc: "iPhone, Samsung, OnePlus, Xiaomi & అన్ని Android బ్రాండ్లు",
@@ -453,8 +504,7 @@ const T = {
     // Intake form
     intakeLabel: "త్వరిత రిపేర్ బుకింగ్",
     intakeH2: "2 నిమిషాల్లో బుక్ చేయండి",
-    intakeSubtitle:
-      "మీ పరికర వివరాలు నమోదు చేయండి, మేము 15 నిమిషాల్లో WhatsApp లో ధర పంపుతాం!",
+    intakeSubtitle: "మీ పరికర వివరాలు నమోదు చేయండి, మేము 15 నిమిషాల్లో WhatsApp లో ధర పంపుతాం!",
     modelLabel: "మీ పరికరం (ఉదా: iPhone 14, Samsung S23, OnePlus 12)",
     issueLabel: "మీ పరికరానికి ఏమి సమస్య?",
     issuePlaceholder: "సమస్యను ఎంచుకోండి",
@@ -463,7 +513,8 @@ const T = {
     expressWalkin: "నేరుగా రండి",
     expressWalkinSub: "మా Opp-Chennai Shopping Mall షాప్‌కు నేరుగా రండి — వెంటనే మొదలుపెడతాం",
     doorstepPickup: "ఉచిత డోర్‌స్టెప్ పికప్",
-    doorstepPickupSub: "మేము మీ ఇంటికి వచ్చి పరికరాన్ని తీసుకెళ్తాం — తాడేపల్లిగూడెం లో మాత్రమే ఉచితం",
+    doorstepPickupSub:
+      "మేము మీ ఇంటికి వచ్చి పరికరాన్ని తీసుకెళ్తాం — తాడేపల్లిగూడెం లో మాత్రమే ఉచితం",
     nameLabel: "మీ పేరు",
     phoneLabel: "మీ WhatsApp నంబర్",
     formError: "రిపేర్ కోట్ పంపడానికి అన్ని వివరాలు నమోదు చేయండి.",
@@ -508,7 +559,8 @@ const T = {
     // CTA Banner
     ctaTagline: "ఉచిత పికప్ — తాడేపల్లిగూడెం మాత్రమే",
     ctaH2: "ఈరోజే మీ రిపేర్ బుక్ చేయండి",
-    ctaBody: "కాల్ చేయండి లేదా WhatsApp చేయండి — మేము తాడేపల్లిగూడెంలో ఎక్కడైనా మీ ఇంటికి వచ్చి పరికరాన్ని ఉచితంగా తీసుకెళ్తాం.",
+    ctaBody:
+      "కాల్ చేయండి లేదా WhatsApp చేయండి — మేము తాడేపల్లిగూడెంలో ఎక్కడైనా మీ ఇంటికి వచ్చి పరికరాన్ని ఉచితంగా తీసుకెళ్తాం.",
     ctaCall: "ఇప్పుడు కాల్ చేయండి",
     ctaWhatsapp: "WhatsApp చేయండి",
     // Footer
@@ -543,8 +595,7 @@ const T = {
       { step: "4. మరమ్మత్తు", time: "సాధారణంగా 60–90 నిమిషాలు" },
     ],
     waCrmGuide: "WhatsApp లేబుల్ గైడ్",
-    waCrmBody:
-      "మీ ఉచిత WhatsApp Business యాప్‌లో ఈ రంగు లేబుళ్ళు వాడి ప్రతి జాబ్ ట్రాక్ చేయండి:",
+    waCrmBody: "మీ ఉచిత WhatsApp Business యాప్‌లో ఈ రంగు లేబుళ్ళు వాడి ప్రతి జాబ్ ట్రాక్ చేయండి:",
     noTickets: "ఇంకా యాక్టివ్ జాబ్‌లు లేవు.",
     noTicketsSub: "కస్టమర్ల నుండి కొత్త బుకింగ్‌లు ఇక్కడ కనిపిస్తాయి.",
     intakeRequestIssue: "రిపోర్ట్ చేసిన సమస్య",
@@ -574,7 +625,7 @@ interface Ticket {
   issue: string;
   service: string;
   name: string;
-  status: typeof STEPS[number]["name"];
+  status: (typeof STEPS)[number]["name"];
   cost: string;
   notes: string;
   createdAt: string;
@@ -633,7 +684,6 @@ function Index() {
   const [phone, setPhone] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [error, setError] = useState("");
-  const [menuOpen, setMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeReel, setActiveReel] = useState<string | null>(null);
 
@@ -672,12 +722,10 @@ function Index() {
     { label: t.navServices, id: "services" },
     { label: t.navPricing, id: "pricing" },
     { label: t.navReviews, id: "reviews" },
-    { label: t.navBook, id: "intake-form" },
     { label: t.navFaq, id: "faq" },
   ];
 
   const goToSection = (id: string) => {
-    setMenuOpen(false);
     if (id === "top") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
@@ -830,192 +878,29 @@ function Index() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 antialiased selection:bg-orange-500/20 relative overflow-x-hidden">
       {/* NAV */}
-      <header className="sticky top-0 z-50 w-full">
-        {/* ── Tier 1: utility strip ── */}
-        <div className="hidden md:block bg-slate-900 text-slate-300">
-          <div className="section-shell flex items-center justify-between gap-6 px-6 h-9 text-[11.5px] font-medium">
-            <a
-              href="https://www.google.com/maps/dir/?api=1&destination=Garooda+Mobiles+Tadepalligudem"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 hover:text-white transition-colors"
-            >
-              <MapPin className="h-3.5 w-3.5 text-orange-400 shrink-0" />
-              <span>Opp-Chennai Shopping Mall, Tadepalligudem</span>
-            </a>
-            <div className="flex items-center gap-5">
-              <span className="inline-flex items-center gap-1.5">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75 animate-ping" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-orange-500" />
-                </span>
-                <span className="font-semibold text-orange-300">{t.hubOperational}</span>
-                <span className="text-slate-500">· 10 AM – 10 PM</span>
-              </span>
-              <span className="h-3.5 w-px bg-white/10" />
-              <a href="tel:+918125019015" className="inline-flex items-center gap-1.5 hover:text-white transition-colors">
-                <PhoneIcon className="h-3.5 w-3.5 text-orange-400" /> +91 81250 19015
-              </a>
-              <span className="h-3.5 w-px bg-white/10" />
-              <button
-                onClick={() => setLang(lang === "en" ? "te" : "en")}
-                className="inline-flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer"
-                title="Switch language"
-              >
-                <Globe className="h-3.5 w-3.5" />
-                {lang === "en" ? "తెలుగు" : "English"}
-              </button>
-              <a
-                href="https://www.instagram.com/garoodamobiles_tadepalligudem/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center hover:text-white transition-colors"
-                title="Follow us on Instagram"
-              >
-                <Instagram className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* ── Tier 2: main bar ── */}
-        <div className="backdrop-blur-xl bg-white/90 border-b border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
-          <div className="section-shell flex items-center justify-between gap-4 px-4 sm:px-6 h-16">
-            {/* Brand */}
-            <button
-              onClick={() => { setViewMode("client"); goToSection("top"); }}
-              className="flex items-center gap-2.5 cursor-pointer group shrink-0"
-              aria-label="garooda Mobiles — home"
-            >
-              <div className="relative">
-                <div className="absolute -inset-1.5 bg-gradient-to-r from-orange-500 to-amber-500 rounded-xl blur-md opacity-20 group-hover:opacity-35 transition duration-300" />
-                <img src={garoodaLogo} alt="garooda Mobiles Logo" className="relative h-10 w-auto object-contain rounded-xl mix-blend-multiply transition-transform duration-300 group-hover:scale-105" />
-              </div>
-            </button>
-
-            {/* Desktop nav */}
-            {viewMode === "client" && (
-              <nav className="hidden lg:flex items-center gap-8">
-                {navLinks.map((link) => (
-                  <button
-                    key={link.label}
-                    onClick={() => goToSection(link.id)}
-                    className="text-[13px] font-semibold text-slate-600 hover:text-orange-600 transition-all duration-300 cursor-pointer relative py-1.5 group"
-                  >
-                    {link.label}
-                    <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-orange-500 rounded-full transition-all duration-300 group-hover:w-full" />
-                  </button>
-                ))}
-              </nav>
-            )}
-
-            {/* Right cluster */}
-            <div className="flex items-center gap-2 sm:gap-3">
-              {isAuthorized && (
-                <button
-                  onClick={() => setViewMode(viewMode === "client" ? "technician" : "client")}
-                  className="hidden sm:inline-flex items-center gap-2 rounded-xl border border-orange-500/30 bg-orange-50 hover:bg-orange-100 px-3.5 py-2.5 text-xs font-bold tracking-wide text-orange-700 transition-all duration-300 cursor-pointer"
-                >
-                  {viewMode === "client" ? (
-                    <><Wrench className="h-3.5 w-3.5" /><span className="hidden lg:inline">{t.techPortal}</span></>
-                  ) : (
-                    <><ClipboardList className="h-3.5 w-3.5" /><span className="hidden lg:inline">{t.clientBooking}</span></>
-                  )}
-                </button>
-              )}
-
-              {/* Call — mobile only (number lives in the strip on desktop) */}
-              <a
-                href="tel:+918125019015"
-                className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-orange-600 shadow-sm transition active:scale-95"
-                aria-label="Call garooda Mobiles"
-              >
-                <PhoneIcon className="h-4.5 w-4.5" />
-              </a>
-
-              {/* Primary CTA — Book */}
-              {viewMode === "client" && (
-                <button
-                  onClick={() => { setViewMode("client"); goToSection("intake-form"); }}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white font-bold text-sm px-4 sm:px-5 py-2.5 shadow-[0_8px_20px_-6px_rgba(249,115,22,0.55)] transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
-                >
-                  <Zap className="h-4 w-4 fill-current" />
-                  <span className="hidden sm:inline">{t.navBook}</span>
-                  <span className="sm:hidden">Book</span>
-                </button>
-              )}
-
-              {/* Mobile menu toggle */}
-              {viewMode === "client" && (
-                <button
-                  onClick={() => setMenuOpen((v) => !v)}
-                  className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition-all duration-200 cursor-pointer"
-                  aria-label={menuOpen ? "Close menu" : "Open menu"}
-                  aria-expanded={menuOpen}
-                >
-                  {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* ── Mobile dropdown menu ── */}
-        {viewMode === "client" && menuOpen && (
-          <div className="lg:hidden border-t border-slate-200 bg-white/95 backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-200">
-            <nav className="section-shell px-4 sm:px-6 py-4 flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <button
-                  key={link.label}
-                  onClick={() => goToSection(link.id)}
-                  className="w-full text-left px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-orange-50 hover:text-orange-700 transition-colors duration-200 cursor-pointer"
-                >
-                  {link.label}
-                </button>
-              ))}
-              <div className="mt-3 grid grid-cols-2 gap-3">
-                <button
-                  onClick={() => goToSection("intake-form")}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-sm px-4 py-3 shadow-sm transition active:scale-[0.98]"
-                >
-                  <Zap className="h-4 w-4 fill-current" />{t.navBook}
-                </button>
-                <a
-                  href={`https://wa.me/${SHOP_PHONE}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] text-white font-bold text-sm px-4 py-3 shadow-sm transition active:scale-[0.98]"
-                >
-                  <WhatsAppIcon className="h-4 w-4" />WhatsApp
-                </a>
-              </div>
-              {/* utility row */}
-              <div className="mt-3 flex items-center justify-between border-t border-slate-100 pt-3">
-                <a href="tel:+918125019015" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600">
-                  <PhoneIcon className="h-4 w-4 text-orange-500" /> +91 81250 19015
-                </a>
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => setLang(lang === "en" ? "te" : "en")}
-                    className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-600 cursor-pointer"
-                  >
-                    <Globe className="h-3.5 w-3.5" />{lang === "en" ? "తెలుగు" : "English"}
-                  </button>
-                  <a
-                    href="https://www.instagram.com/garoodamobiles_tadepalligudem/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-slate-600"
-                    aria-label="Instagram"
-                  >
-                    <Instagram className="h-4 w-4" />
-                  </a>
-                </div>
-              </div>
-            </nav>
-          </div>
-        )}
-      </header>
+      <SiteNavbar
+        active="home"
+        navItems={navLinks}
+        blogLabel={lang === "te" ? "బ్లాగ్" : "Blog"}
+        bookLabel={t.navBook}
+        hubOperational={t.hubOperational}
+        onSection={goToSection}
+        onBook={() => {
+          setViewMode("client");
+          goToSection("intake-form");
+        }}
+        onBrand={() => {
+          setViewMode("client");
+          goToSection("top");
+        }}
+        lang={lang}
+        onToggleLang={() => setLang(lang === "en" ? "te" : "en")}
+        viewMode={viewMode}
+        isAuthorized={isAuthorized}
+        onToggleView={() => setViewMode(viewMode === "client" ? "technician" : "client")}
+        techLabel={t.techPortal}
+        clientLabel={t.clientBooking}
+      />
 
       <main className="relative z-10 px-4 sm:px-6">
         {viewMode === "client" ? (
@@ -1033,7 +918,6 @@ function Index() {
                 {/* content — two-column: copy + phone visual */}
                 <div className="section-shell relative z-10 w-full px-4 sm:px-6 py-16 sm:py-20">
                   <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-6 items-center">
-
                     {/* ── LEFT: copy ── */}
                     <div className="max-w-xl mx-auto lg:mx-0 text-center lg:text-left flex flex-col items-center lg:items-start">
                       <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-1.5 text-[11px] sm:text-xs text-orange-700 font-semibold tracking-wide mb-7 shadow-sm animate-in fade-in slide-in-from-bottom-3 duration-500">
@@ -1058,7 +942,10 @@ function Index() {
                       <div className="flex items-center gap-3 mb-8 animate-in fade-in slide-in-from-bottom-5 duration-600">
                         <div className="flex gap-0.5">
                           {Array.from({ length: 5 }).map((_, s) => (
-                            <Star key={s} className="h-[18px] w-[18px] text-amber-400 fill-amber-400" />
+                            <Star
+                              key={s}
+                              className="h-[18px] w-[18px] text-amber-400 fill-amber-400"
+                            />
                           ))}
                         </div>
                         <span className="text-sm font-medium text-slate-500">
@@ -1154,51 +1041,83 @@ function Index() {
                           </span>
                           <div className="leading-tight">
                             <p className="text-sm font-bold text-white">Chip-level experts</p>
-                            <p className="text-[11px] text-white/70">Micro-soldering &amp; board repair</p>
+                            <p className="text-[11px] text-white/70">
+                              Micro-soldering &amp; board repair
+                            </p>
                           </div>
                         </div>
                       </div>
                     </div>
-
                   </div>
                 </div>
-
               </div>
 
               {/* Device category cards — below hero split */}
-              <div id="services" className="section-shell section-anchor mt-16 sm:mt-20 space-y-16 animate-in fade-in slide-in-from-bottom-5 duration-800">
-
+              <div
+                id="services"
+                className="section-shell section-anchor mt-16 sm:mt-20 space-y-16 animate-in fade-in slide-in-from-bottom-5 duration-800"
+              >
                 {/* ── Repair Services ── */}
                 <div>
                   <div className="flex items-center gap-3.5 mb-8">
                     <span className="inline-grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/25">
                       <Wrench className="h-5 w-5" />
                     </span>
-                    <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">{t.svcRepairLabel}</h3>
+                    <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+                      {t.svcRepairLabel}
+                    </h3>
                     <div className="flex-1 h-px bg-gradient-to-r from-slate-200 to-transparent" />
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                     {[
-                      { Icon: Smartphone, title: t.phones, desc: t.phonesDesc, tags: ["Screen", "Battery", "Charging", "Water Damage"] },
-                      { Icon: Tablet, title: t.tablets, desc: t.tabletsDesc, tags: ["Display", "Battery", "Software"] },
-                      { Icon: Cpu, title: t.motherboard, desc: t.motherboardDesc, tags: ["Chip-level", "Micro-solder", "Data Recovery"] },
+                      {
+                        Icon: Smartphone,
+                        title: t.phones,
+                        desc: t.phonesDesc,
+                        tags: ["Screen", "Battery", "Charging", "Water Damage"],
+                      },
+                      {
+                        Icon: Tablet,
+                        title: t.tablets,
+                        desc: t.tabletsDesc,
+                        tags: ["Display", "Battery", "Software"],
+                      },
+                      {
+                        Icon: Cpu,
+                        title: t.motherboard,
+                        desc: t.motherboardDesc,
+                        tags: ["Chip-level", "Micro-solder", "Data Recovery"],
+                      },
                     ].map((card, i) => (
                       <button
                         type="button"
                         key={card.title}
-                        onClick={() => document.getElementById("intake-form")?.scrollIntoView({ behavior: "smooth" })}
+                        onClick={() =>
+                          document
+                            .getElementById("intake-form")
+                            ?.scrollIntoView({ behavior: "smooth" })
+                        }
                         className="group relative flex flex-col items-start text-left overflow-hidden rounded-2xl bg-white border border-slate-200 p-7 shadow-sm hover:shadow-[0_30px_60px_-28px_rgba(249,115,22,0.45)] hover:border-orange-300 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
                       >
                         <div className="absolute -top-14 -right-14 h-36 w-36 rounded-full bg-orange-100/70 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                        <span className="section-index absolute top-6 right-7 text-5xl select-none pointer-events-none">0{i + 1}</span>
+                        <span className="section-index absolute top-6 right-7 text-5xl select-none pointer-events-none">
+                          0{i + 1}
+                        </span>
                         <span className="relative inline-grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/25 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3">
                           <card.Icon className="h-7 w-7" />
                         </span>
-                        <h4 className="relative mt-5 font-display text-xl font-bold text-slate-900 tracking-tight">{card.title.replace(/^[^\p{L}]+/u, "")}</h4>
-                        <p className="relative mt-2 text-sm text-slate-500 leading-relaxed">{card.desc}</p>
+                        <h4 className="relative mt-5 font-display text-xl font-bold text-slate-900 tracking-tight">
+                          {card.title.replace(/^[^\p{L}]+/u, "")}
+                        </h4>
+                        <p className="relative mt-2 text-sm text-slate-500 leading-relaxed">
+                          {card.desc}
+                        </p>
                         <div className="relative mt-4 flex flex-wrap gap-1.5">
                           {card.tags.map((tag) => (
-                            <span key={tag} className="rounded-md bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-500">
+                            <span
+                              key={tag}
+                              className="rounded-md bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-500"
+                            >
                               {tag}
                             </span>
                           ))}
@@ -1220,7 +1139,9 @@ function Index() {
                     <span className="inline-grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-slate-900 text-orange-400 shadow-lg shadow-slate-900/15">
                       <ShoppingBag className="h-5 w-5" />
                     </span>
-                    <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">{t.svcAccessoriesLabel}</h3>
+                    <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+                      {t.svcAccessoriesLabel}
+                    </h3>
                     <div className="flex-1 h-px bg-gradient-to-r from-slate-200 to-transparent" />
                   </div>
                   <div className="rounded-3xl border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
@@ -1239,14 +1160,17 @@ function Index() {
                           <span className="inline-grid h-12 w-12 place-items-center rounded-xl bg-slate-100 text-slate-700 group-hover:bg-gradient-to-br group-hover:from-orange-500 group-hover:to-amber-500 group-hover:text-white transition-all duration-300 group-hover:scale-105">
                             <card.Icon className="h-5.5 w-5.5" />
                           </span>
-                          <h4 className="mt-3.5 font-bold text-slate-900 text-sm tracking-tight">{card.title.replace(/^[^\p{L}]+/u, "")}</h4>
-                          <p className="mt-1 text-[11px] text-slate-500 leading-relaxed">{card.desc}</p>
+                          <h4 className="mt-3.5 font-bold text-slate-900 text-sm tracking-tight">
+                            {card.title.replace(/^[^\p{L}]+/u, "")}
+                          </h4>
+                          <p className="mt-1 text-[11px] text-slate-500 leading-relaxed">
+                            {card.desc}
+                          </p>
                         </div>
                       ))}
                     </div>
                   </div>
                 </div>
-
               </div>
             </section>
 
@@ -1269,18 +1193,25 @@ function Index() {
                   <h2 className="mt-4 font-display text-4xl sm:text-5xl font-bold tracking-tight text-neutral-900 leading-[1.04]">
                     {t.intakeH2}
                   </h2>
-                  <p className="mt-4 text-neutral-500 text-base leading-relaxed max-w-md">{t.intakeSubtitle}</p>
+                  <p className="mt-4 text-neutral-500 text-base leading-relaxed max-w-md">
+                    {t.intakeSubtitle}
+                  </p>
 
                   <div className="mt-8 space-y-3">
                     {t.trustStats.map((s, i) => {
                       const Icon = [Wrench, Star, Users, ShieldCheck][i];
                       return (
-                        <div key={s.label} className="flex items-center gap-3.5 rounded-2xl border border-neutral-200 bg-white p-3.5 shadow-sm">
+                        <div
+                          key={s.label}
+                          className="flex items-center gap-3.5 rounded-2xl border border-neutral-200 bg-white p-3.5 shadow-sm"
+                        >
                           <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-orange-50 text-orange-600">
                             <Icon className="h-5 w-5" />
                           </span>
                           <div className="leading-tight">
-                            <p className="font-display text-lg font-bold text-neutral-900">{s.value}</p>
+                            <p className="font-display text-lg font-bold text-neutral-900">
+                              {s.value}
+                            </p>
                             <p className="text-xs text-neutral-500 font-medium">{s.label}</p>
                           </div>
                         </div>
@@ -1289,160 +1220,197 @@ function Index() {
                   </div>
 
                   <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                    <a href="tel:+918125019015" className="inline-flex items-center justify-center gap-2 rounded-2xl border border-neutral-200 bg-white hover:border-orange-300 text-neutral-700 font-semibold text-sm px-5 py-3 transition">
-                      <PhoneIcon className="h-4.5 w-4.5 text-orange-500" />{t.heroCtaCall}
+                    <a
+                      href="tel:+918125019015"
+                      className="inline-flex items-center justify-center gap-2 rounded-2xl border border-neutral-200 bg-white hover:border-orange-300 text-neutral-700 font-semibold text-sm px-5 py-3 transition"
+                    >
+                      <PhoneIcon className="h-4.5 w-4.5 text-orange-500" />
+                      {t.heroCtaCall}
                     </a>
-                    <a href={`https://wa.me/${SHOP_PHONE}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-2xl border border-neutral-200 bg-white hover:border-orange-300 text-neutral-700 font-semibold text-sm px-5 py-3 transition">
-                      <WhatsAppIcon className="h-4.5 w-4.5 text-[#25D366]" />{t.heroCtaChat}
+                    <a
+                      href={`https://wa.me/${SHOP_PHONE}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 rounded-2xl border border-neutral-200 bg-white hover:border-orange-300 text-neutral-700 font-semibold text-sm px-5 py-3 transition"
+                    >
+                      <WhatsAppIcon className="h-4.5 w-4.5 text-[#25D366]" />
+                      {t.heroCtaChat}
                     </a>
                   </div>
                 </div>
 
                 {/* ── Right: form ── */}
                 <div className="relative rounded-3xl bg-white border border-slate-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] p-8 sm:p-10">
-                <FloatingInput
-                  id="model"
-                  label={t.modelLabel}
-                  value={model}
-                  onChange={setModel}
-                />
+                  <FloatingInput
+                    id="model"
+                    label={t.modelLabel}
+                    value={model}
+                    onChange={setModel}
+                  />
 
-                <div className="mt-6 relative">
-                  <label className="block text-[10px] uppercase tracking-widest text-slate-400 mb-2.5 font-bold">
-                    {t.issueLabel}
-                  </label>
-                  <button
-                    type="button"
-                    onClick={() => setIssueOpen((v) => !v)}
-                    className="w-full flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-left text-slate-800 hover:border-orange-400 focus:border-orange-500 transition duration-300 font-medium"
-                  >
-                    <span className={issue ? "text-slate-800" : "text-slate-400"}>
-                      {issue || t.issuePlaceholder}
-                    </span>
-                    <ChevronDown className={`h-5 w-5 text-slate-400 transition-transform duration-300 ${issueOpen ? "rotate-180 text-orange-500" : ""}`} />
-                  </button>
-                  {issueOpen && (
-                    <div className="absolute left-0 right-0 z-30 mt-2 rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xl p-2.5 space-y-1 animate-in fade-in slide-in-from-top-2 duration-200">
-                      {t.issues.map((opt) => (
-                        <button
-                          key={opt}
-                          type="button"
-                          onClick={() => { setIssue(opt); setIssueOpen(false); }}
-                          className={`w-full text-left px-4 py-3.5 text-sm font-medium rounded-xl transition-all duration-200 ${
-                            issue === opt
-                              ? "bg-orange-50 text-orange-700"
-                              : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
-                          }`}
-                        >
-                          {opt}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-
-                  <div className={`grid transition-all duration-300 ease-out ${isOther ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0"}`}>
-                    <div className="overflow-hidden">
-                      <textarea
-                        value={customIssue}
-                        onChange={(e) => setCustomIssue(e.target.value)}
-                        rows={3}
-                        placeholder={t.customIssuePlaceholder}
-                        className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-slate-800 placeholder:text-slate-400 focus:border-orange-500 focus:outline-none focus:ring-4 focus:ring-orange-500/10 transition-all duration-300 resize-none font-medium"
+                  <div className="mt-6 relative">
+                    <label className="block text-[10px] uppercase tracking-widest text-slate-400 mb-2.5 font-bold">
+                      {t.issueLabel}
+                    </label>
+                    <button
+                      type="button"
+                      onClick={() => setIssueOpen((v) => !v)}
+                      className="w-full flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-left text-slate-800 hover:border-orange-400 focus:border-orange-500 transition duration-300 font-medium"
+                    >
+                      <span className={issue ? "text-slate-800" : "text-slate-400"}>
+                        {issue || t.issuePlaceholder}
+                      </span>
+                      <ChevronDown
+                        className={`h-5 w-5 text-slate-400 transition-transform duration-300 ${issueOpen ? "rotate-180 text-orange-500" : ""}`}
                       />
+                    </button>
+                    {issueOpen && (
+                      <div className="absolute left-0 right-0 z-30 mt-2 rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xl p-2.5 space-y-1 animate-in fade-in slide-in-from-top-2 duration-200">
+                        {t.issues.map((opt) => (
+                          <button
+                            key={opt}
+                            type="button"
+                            onClick={() => {
+                              setIssue(opt);
+                              setIssueOpen(false);
+                            }}
+                            className={`w-full text-left px-4 py-3.5 text-sm font-medium rounded-xl transition-all duration-200 ${
+                              issue === opt
+                                ? "bg-orange-50 text-orange-700"
+                                : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                            }`}
+                          >
+                            {opt}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+
+                    <div
+                      className={`grid transition-all duration-300 ease-out ${isOther ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0"}`}
+                    >
+                      <div className="overflow-hidden">
+                        <textarea
+                          value={customIssue}
+                          onChange={(e) => setCustomIssue(e.target.value)}
+                          rows={3}
+                          placeholder={t.customIssuePlaceholder}
+                          className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-slate-800 placeholder:text-slate-400 focus:border-orange-500 focus:outline-none focus:ring-4 focus:ring-orange-500/10 transition-all duration-300 resize-none font-medium"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="mt-6">
-                  <label className="block text-[10px] uppercase tracking-widest text-slate-400 mb-2.5 font-bold">
-                    {t.serviceLabel}
-                  </label>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {[
-                      { v: "Express Walk-In" as const, label: t.expressWalkin, sub: t.expressWalkinSub },
-                      { v: "Doorstep Pickup" as const, label: t.doorstepPickup, sub: t.doorstepPickupSub },
-                    ].map((o) => {
-                      const active = service === o.v;
-                      return (
-                        <button
-                          key={o.v}
-                          type="button"
-                          onClick={() => setService(o.v)}
-                          className={`group rounded-2xl border px-5 py-5 text-left transition-all duration-300 ${
-                            active
-                              ? "border-orange-400 bg-orange-50 shadow-sm"
-                              : "border-slate-200 bg-slate-50 hover:border-slate-300 hover:bg-white"
-                          }`}
-                        >
-                          <div className="flex items-center justify-between">
-                            <span className={`font-semibold text-base transition-colors ${active ? "text-orange-700" : "text-slate-700"}`}>
-                              {o.label}
-                            </span>
-                            <span className={`h-5 w-5 rounded-full border-2 flex items-center justify-center transition-all ${active ? "border-orange-500" : "border-slate-300"}`}>
-                              {active && <span className="h-2.5 w-2.5 rounded-full bg-orange-500 animate-pulse" />}
-                            </span>
-                          </div>
-                          <p className="text-xs text-slate-400 mt-2 leading-relaxed">{o.sub}</p>
-                        </button>
-                      );
-                    })}
+                  <div className="mt-6">
+                    <label className="block text-[10px] uppercase tracking-widest text-slate-400 mb-2.5 font-bold">
+                      {t.serviceLabel}
+                    </label>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {[
+                        {
+                          v: "Express Walk-In" as const,
+                          label: t.expressWalkin,
+                          sub: t.expressWalkinSub,
+                        },
+                        {
+                          v: "Doorstep Pickup" as const,
+                          label: t.doorstepPickup,
+                          sub: t.doorstepPickupSub,
+                        },
+                      ].map((o) => {
+                        const active = service === o.v;
+                        return (
+                          <button
+                            key={o.v}
+                            type="button"
+                            onClick={() => setService(o.v)}
+                            className={`group rounded-2xl border px-5 py-5 text-left transition-all duration-300 ${
+                              active
+                                ? "border-orange-400 bg-orange-50 shadow-sm"
+                                : "border-slate-200 bg-slate-50 hover:border-slate-300 hover:bg-white"
+                            }`}
+                          >
+                            <div className="flex items-center justify-between">
+                              <span
+                                className={`font-semibold text-base transition-colors ${active ? "text-orange-700" : "text-slate-700"}`}
+                              >
+                                {o.label}
+                              </span>
+                              <span
+                                className={`h-5 w-5 rounded-full border-2 flex items-center justify-center transition-all ${active ? "border-orange-500" : "border-slate-300"}`}
+                              >
+                                {active && (
+                                  <span className="h-2.5 w-2.5 rounded-full bg-orange-500 animate-pulse" />
+                                )}
+                              </span>
+                            </div>
+                            <p className="text-xs text-slate-400 mt-2 leading-relaxed">{o.sub}</p>
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
 
-                <div className="mt-6">
-                  <FloatingInput
-                    id="name"
-                    label={t.nameLabel}
-                    value={name}
-                    onChange={setName}
-                    icon={<UserIcon className="h-5 w-5" />}
-                  />
-                </div>
-
-                <div className="mt-6">
-                  <FloatingInput
-                    id="phone"
-                    label={t.phoneLabel}
-                    value={phone}
-                    onChange={setPhone}
-                    icon={<PhoneIcon className="h-5 w-5" />}
-                    type="tel"
-                  />
-                </div>
-
-                {error && (
-                  <p className="mt-4 text-xs text-red-500 animate-fade-in font-medium flex items-center gap-1.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-red-400" />
-                    {error}
-                  </p>
-                )}
-
-                {/* Progress + submit — lives inside the form */}
-                <div className="mt-8 pt-6 border-t border-slate-100">
-                  <div className="flex justify-between items-center text-xs text-slate-500 font-medium mb-2">
-                    <span>{t.progressLabel}</span>
-                    <span className={progress === 100 ? "text-orange-600 font-semibold" : "text-slate-500 font-semibold"}>
-                      {progress}% Complete
-                    </span>
-                  </div>
-                  <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-gradient-to-r from-orange-500 to-amber-400 rounded-full transition-all duration-500 ease-out"
-                      style={{ width: `${progress}%` }}
+                  <div className="mt-6">
+                    <FloatingInput
+                      id="name"
+                      label={t.nameLabel}
+                      value={name}
+                      onChange={setName}
+                      icon={<UserIcon className="h-5 w-5" />}
                     />
                   </div>
-                  <button
-                    onClick={handleSubmit}
-                    className={`mt-5 w-full inline-flex items-center justify-center gap-3 rounded-2xl transition-all duration-300 px-7 py-4 font-bold text-sm select-none active:scale-[0.98] ${
-                      progress === 100
-                        ? "bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white shadow-[0_10px_30px_-8px_rgba(249,115,22,0.5)] cursor-pointer"
-                        : "bg-slate-100 border border-slate-200 text-slate-400 cursor-not-allowed"
-                    }`}
-                  >
-                    <WhatsAppIcon className="h-4.5 w-4.5" />
-                    {progress === 100 ? t.submitFull : t.submitPartial}
-                  </button>
-                </div>
+
+                  <div className="mt-6">
+                    <FloatingInput
+                      id="phone"
+                      label={t.phoneLabel}
+                      value={phone}
+                      onChange={setPhone}
+                      icon={<PhoneIcon className="h-5 w-5" />}
+                      type="tel"
+                    />
+                  </div>
+
+                  {error && (
+                    <p className="mt-4 text-xs text-red-500 animate-fade-in font-medium flex items-center gap-1.5">
+                      <span className="h-1.5 w-1.5 rounded-full bg-red-400" />
+                      {error}
+                    </p>
+                  )}
+
+                  {/* Progress + submit — lives inside the form */}
+                  <div className="mt-8 pt-6 border-t border-slate-100">
+                    <div className="flex justify-between items-center text-xs text-slate-500 font-medium mb-2">
+                      <span>{t.progressLabel}</span>
+                      <span
+                        className={
+                          progress === 100
+                            ? "text-orange-600 font-semibold"
+                            : "text-slate-500 font-semibold"
+                        }
+                      >
+                        {progress}% Complete
+                      </span>
+                    </div>
+                    <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-gradient-to-r from-orange-500 to-amber-400 rounded-full transition-all duration-500 ease-out"
+                        style={{ width: `${progress}%` }}
+                      />
+                    </div>
+                    <button
+                      onClick={handleSubmit}
+                      className={`mt-5 w-full inline-flex items-center justify-center gap-3 rounded-2xl transition-all duration-300 px-7 py-4 font-bold text-sm select-none active:scale-[0.98] ${
+                        progress === 100
+                          ? "bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white shadow-[0_10px_30px_-8px_rgba(249,115,22,0.5)] cursor-pointer"
+                          : "bg-slate-100 border border-slate-200 text-slate-400 cursor-not-allowed"
+                      }`}
+                    >
+                      <WhatsAppIcon className="h-4.5 w-4.5" />
+                      {progress === 100 ? t.submitFull : t.submitPartial}
+                    </button>
+                  </div>
                 </div>
               </div>
             </section>
@@ -1461,7 +1429,9 @@ function Index() {
                   <div className="h-12 w-12 rounded-xl bg-orange-50 border border-orange-100 grid place-items-center mb-5 transition-transform duration-300 group-hover:scale-110">
                     <c.icon className="h-5.5 w-5.5 text-orange-600" />
                   </div>
-                  <h3 className="text-slate-800 font-bold text-base tracking-tight mb-2">{c.title}</h3>
+                  <h3 className="text-slate-800 font-bold text-base tracking-tight mb-2">
+                    {c.title}
+                  </h3>
                   <p className="text-sm text-slate-500 leading-relaxed">{c.desc}</p>
                 </div>
               ))}
@@ -1473,48 +1443,65 @@ function Index() {
                 {/* ── Left: intro + reassurance ── */}
                 <div className="lg:sticky lg:top-24">
                   <span className="eyebrow">{t.priceLabel}</span>
-                  <h2 className="mt-4 font-display text-4xl sm:text-5xl font-bold tracking-tight text-neutral-900 leading-[1.04]">{t.priceH2}</h2>
-                  <p className="mt-4 text-neutral-500 text-base leading-relaxed max-w-md">{t.priceSubtitle}</p>
+                  <h2 className="mt-4 font-display text-4xl sm:text-5xl font-bold tracking-tight text-neutral-900 leading-[1.04]">
+                    {t.priceH2}
+                  </h2>
+                  <p className="mt-4 text-neutral-500 text-base leading-relaxed max-w-md">
+                    {t.priceSubtitle}
+                  </p>
 
                   <div className="mt-7 flex items-start gap-3.5 rounded-2xl border border-orange-100 bg-orange-50/70 p-5">
                     <ShieldCheck className="h-6 w-6 text-orange-500 shrink-0" />
-                    <p className="text-sm text-neutral-700 leading-relaxed font-medium">{t.priceNote}</p>
+                    <p className="text-sm text-neutral-700 leading-relaxed font-medium">
+                      {t.priceNote}
+                    </p>
                   </div>
 
                   <button
-                    onClick={() => document.getElementById("intake-form")?.scrollIntoView({ behavior: "smooth" })}
+                    onClick={() =>
+                      document.getElementById("intake-form")?.scrollIntoView({ behavior: "smooth" })
+                    }
                     className="mt-6 inline-flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white font-bold text-base px-7 py-3.5 shadow-[0_10px_30px_-8px_rgba(249,115,22,0.5)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                   >
-                    <Zap className="h-5 w-5 fill-current" />{t.heroCtaBook}
+                    <Zap className="h-5 w-5 fill-current" />
+                    {t.heroCtaBook}
                   </button>
                 </div>
 
                 {/* ── Right: price list ── */}
                 <div className="rounded-3xl bg-white border border-slate-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden">
-                <div className="hidden sm:flex items-center justify-between px-8 py-4 bg-slate-50 border-b border-slate-100">
-                  <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">{t.priceCol1}</span>
-                  <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">{t.priceCol2}</span>
-                </div>
-                <ul className="divide-y divide-slate-100">
-                  {t.priceList.map((row) => (
-                    <li
-                      key={row.service}
-                      className="flex items-center justify-between gap-4 px-6 sm:px-8 py-4 hover:bg-orange-50/40 transition-colors duration-200"
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className="h-9 w-9 shrink-0 rounded-xl bg-orange-50 border border-orange-100 grid place-items-center">
-                          <IndianRupee className="h-4 w-4 text-orange-600" />
+                  <div className="hidden sm:flex items-center justify-between px-8 py-4 bg-slate-50 border-b border-slate-100">
+                    <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">
+                      {t.priceCol1}
+                    </span>
+                    <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">
+                      {t.priceCol2}
+                    </span>
+                  </div>
+                  <ul className="divide-y divide-slate-100">
+                    {t.priceList.map((row) => (
+                      <li
+                        key={row.service}
+                        className="flex items-center justify-between gap-4 px-6 sm:px-8 py-4 hover:bg-orange-50/40 transition-colors duration-200"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="h-9 w-9 shrink-0 rounded-xl bg-orange-50 border border-orange-100 grid place-items-center">
+                            <IndianRupee className="h-4 w-4 text-orange-600" />
+                          </span>
+                          <span className="text-sm font-semibold text-slate-700">
+                            {row.service}
+                          </span>
+                        </div>
+                        <span className="text-sm font-bold text-slate-900 whitespace-nowrap">
+                          <span className="text-[10px] font-normal text-slate-400 mr-1 uppercase tracking-wide hidden sm:inline">
+                            from
+                          </span>
+                          {row.price}
                         </span>
-                        <span className="text-sm font-semibold text-slate-700">{row.service}</span>
-                      </div>
-                      <span className="text-sm font-bold text-slate-900 whitespace-nowrap">
-                        <span className="text-[10px] font-normal text-slate-400 mr-1 uppercase tracking-wide hidden sm:inline">from</span>
-                        {row.price}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </section>
 
@@ -1532,7 +1519,9 @@ function Index() {
                       <div className="h-12 w-12 rounded-xl bg-orange-50 border border-orange-100 grid place-items-center mb-5 transition-transform duration-300 group-hover:scale-110">
                         <Icon className="h-5.5 w-5.5 text-orange-600" />
                       </div>
-                      <h3 className="text-slate-800 font-bold text-base tracking-tight mb-2">{item.title}</h3>
+                      <h3 className="text-slate-800 font-bold text-base tracking-tight mb-2">
+                        {item.title}
+                      </h3>
                       <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
                     </div>
                   );
@@ -1546,7 +1535,9 @@ function Index() {
               <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
                 <div className="max-w-2xl">
                   <span className="eyebrow">{t.videoLabel}</span>
-                  <h2 className="mt-4 font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-[1.04]">{t.videoH2}</h2>
+                  <h2 className="mt-4 font-display text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-[1.04]">
+                    {t.videoH2}
+                  </h2>
                   <p className="mt-4 text-slate-500 text-base leading-relaxed">{t.videoSubtitle}</p>
                 </div>
                 <a
@@ -1569,12 +1560,20 @@ function Index() {
                   className="group relative overflow-hidden rounded-3xl min-h-[380px] lg:min-h-[540px] text-left bg-gradient-to-br from-[#1c1c1c] to-[#0e0e0e] shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-orange-500/40 to-orange-700/10 opacity-55 group-hover:opacity-70 transition-opacity duration-300" />
-                  <div className="absolute inset-0 pointer-events-none opacity-[0.07]" style={{ backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+                  <div
+                    className="absolute inset-0 pointer-events-none opacity-[0.07]"
+                    style={{
+                      backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)",
+                      backgroundSize: "20px 20px",
+                    }}
+                  />
                   <Cpu className="absolute -bottom-6 -right-4 h-56 w-56 text-white/5" />
                   <span className="absolute top-4 left-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur-sm px-3 py-1.5 text-[11px] font-bold text-white">
                     <Instagram className="h-3.5 w-3.5" /> Reel
                   </span>
-                  <span className="absolute top-4 right-4 z-10 rounded-full bg-black/50 backdrop-blur-sm px-2.5 py-1 text-[10px] font-bold text-white/90 tracking-wide">0:30</span>
+                  <span className="absolute top-4 right-4 z-10 rounded-full bg-black/50 backdrop-blur-sm px-2.5 py-1 text-[10px] font-bold text-white/90 tracking-wide">
+                    0:30
+                  </span>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <span className="relative flex h-20 w-20 items-center justify-center rounded-full bg-white text-orange-600 shadow-xl transition-transform duration-300 group-hover:scale-110">
                       <span className="absolute inline-flex h-full w-full rounded-full bg-white/40 animate-ping" />
@@ -1582,8 +1581,12 @@ function Index() {
                     </span>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 to-transparent p-6 pt-16">
-                    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-orange-400">Featured</span>
-                    <h4 className="mt-1 text-white font-display font-bold text-2xl tracking-tight">{t.videoItems[0].title}</h4>
+                    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-orange-400">
+                      Featured
+                    </span>
+                    <h4 className="mt-1 text-white font-display font-bold text-2xl tracking-tight">
+                      {t.videoItems[0].title}
+                    </h4>
                     <p className="text-white/60 text-sm mt-1 max-w-md">{t.videoItems[0].desc}</p>
                   </div>
                 </button>
@@ -1607,7 +1610,9 @@ function Index() {
                         className="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm hover:border-orange-300 hover:shadow-lg transition-all duration-300 text-left cursor-pointer lg:flex-1"
                       >
                         <span className="relative grid h-20 w-20 shrink-0 place-items-center rounded-xl overflow-hidden bg-gradient-to-br from-[#262626] to-[#141414]">
-                          <div className={`absolute inset-0 bg-gradient-to-br opacity-55 ${accent}`} />
+                          <div
+                            className={`absolute inset-0 bg-gradient-to-br opacity-55 ${accent}`}
+                          />
                           <Icon className="absolute h-9 w-9 text-white/10" />
                           <span className="relative grid h-10 w-10 place-items-center rounded-full bg-white/90 text-orange-600 shadow transition-transform duration-300 group-hover:scale-110">
                             <Play className="h-4 w-4 fill-current ml-0.5" />
@@ -1615,8 +1620,12 @@ function Index() {
                         </span>
                         <div className="min-w-0 flex-1">
                           <div className="flex items-center gap-2">
-                            <h4 className="font-bold text-slate-900 text-sm tracking-tight truncate">{vid.title}</h4>
-                            <span className="text-[10px] font-bold text-slate-400 shrink-0">0:30</span>
+                            <h4 className="font-bold text-slate-900 text-sm tracking-tight truncate">
+                              {vid.title}
+                            </h4>
+                            <span className="text-[10px] font-bold text-slate-400 shrink-0">
+                              0:30
+                            </span>
                           </div>
                           <p className="text-xs text-slate-500 leading-snug mt-0.5">{vid.desc}</p>
                         </div>
@@ -1630,7 +1639,11 @@ function Index() {
 
             {/* CUSTOMER REVIEWS */}
             <section className="section-shell section-anchor py-16 sm:py-24" id="reviews">
-              <SectionHeader eyebrow={t.reviewsLabel} title={t.reviewsH2} subtitle={t.reviewsSubtitle} />
+              <SectionHeader
+                eyebrow={t.reviewsLabel}
+                title={t.reviewsH2}
+                subtitle={t.reviewsSubtitle}
+              />
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {t.reviewItems.map((r, i) => {
                   const grad = [
@@ -1641,18 +1654,27 @@ function Index() {
                     "from-neutral-700 to-neutral-900",
                     "from-amber-600 to-orange-500",
                   ][i % 6];
-                  const initials = r.name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+                  const initials = r.name
+                    .split(" ")
+                    .map((w) => w[0])
+                    .join("")
+                    .slice(0, 2)
+                    .toUpperCase();
                   return (
                     <div
                       key={r.name}
                       className="flex flex-col rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-lg hover:border-orange-200 p-6 transition-all duration-300 hover:-translate-y-1"
                     >
                       <div className="flex items-center gap-3 mb-4">
-                        <span className={`h-12 w-12 shrink-0 rounded-full bg-gradient-to-br ${grad} grid place-items-center text-white font-bold text-sm shadow-sm`}>
+                        <span
+                          className={`h-12 w-12 shrink-0 rounded-full bg-gradient-to-br ${grad} grid place-items-center text-white font-bold text-sm shadow-sm`}
+                        >
                           {initials}
                         </span>
                         <div>
-                          <h4 className="font-bold text-slate-800 text-sm tracking-tight">{r.name}</h4>
+                          <h4 className="font-bold text-slate-800 text-sm tracking-tight">
+                            {r.name}
+                          </h4>
                           <p className="text-[11px] text-slate-400 font-medium">{r.device}</p>
                         </div>
                       </div>
@@ -1704,7 +1726,13 @@ function Index() {
             <section className="section-shell py-12">
               <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-orange-500 to-amber-600 shadow-[0_20px_60px_-15px_rgba(249, 115, 22,0.4)] px-8 py-12 sm:px-16 sm:py-14">
                 {/* subtle pattern overlay */}
-                <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "22px 22px" }} />
+                <div
+                  className="absolute inset-0 opacity-10 pointer-events-none"
+                  style={{
+                    backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
+                    backgroundSize: "22px 22px",
+                  }}
+                />
                 <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8">
                   <div className="text-center lg:text-left">
                     <span className="inline-flex items-center gap-2 rounded-full bg-white/20 border border-white/30 px-4 py-1.5 text-xs font-bold text-white tracking-widest uppercase mb-5">
@@ -1746,55 +1774,71 @@ function Index() {
                 {/* ── Left: intro + contact ── */}
                 <div className="lg:sticky lg:top-24">
                   <span className="eyebrow">{t.faqBadge}</span>
-                  <h2 className="mt-4 font-display text-4xl sm:text-5xl font-bold tracking-tight text-neutral-900 leading-[1.04]">{t.faqH2}</h2>
+                  <h2 className="mt-4 font-display text-4xl sm:text-5xl font-bold tracking-tight text-neutral-900 leading-[1.04]">
+                    {t.faqH2}
+                  </h2>
                   <p className="mt-4 text-neutral-500 text-base leading-relaxed max-w-sm">
                     {lang === "te"
                       ? "మీ సందేహానికి సమాధానం దొరకలేదా? WhatsApp లో మెసేజ్ చేయండి — నిమిషాల్లో స్పందిస్తాం."
                       : "Can't find your answer? Message us on WhatsApp and we'll reply within minutes."}
                   </p>
                   <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                    <a href={`https://wa.me/${SHOP_PHONE}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm px-5 py-3 transition">
-                      <WhatsAppIcon className="h-4.5 w-4.5" />{t.heroCtaChat}
+                    <a
+                      href={`https://wa.me/${SHOP_PHONE}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm px-5 py-3 transition"
+                    >
+                      <WhatsAppIcon className="h-4.5 w-4.5" />
+                      {t.heroCtaChat}
                     </a>
-                    <a href="tel:+918125019015" className="inline-flex items-center justify-center gap-2 rounded-2xl border border-neutral-200 bg-white hover:border-orange-300 text-neutral-700 font-semibold text-sm px-5 py-3 transition">
-                      <PhoneIcon className="h-4.5 w-4.5 text-orange-500" />{t.heroCtaCall}
+                    <a
+                      href="tel:+918125019015"
+                      className="inline-flex items-center justify-center gap-2 rounded-2xl border border-neutral-200 bg-white hover:border-orange-300 text-neutral-700 font-semibold text-sm px-5 py-3 transition"
+                    >
+                      <PhoneIcon className="h-4.5 w-4.5 text-orange-500" />
+                      {t.heroCtaCall}
                     </a>
                   </div>
                 </div>
 
                 {/* ── Right: accordion ── */}
                 <div className="space-y-3">
-                {[
-                  { q: t.faq1q, a: t.faq1a },
-                  { q: t.faq2q, a: t.faq2a },
-                  { q: t.faq3q, a: t.faq3a },
-                  { q: t.faq4q, a: t.faq4a },
-                ].map((f, i) => {
-                  const open = openFaq === i;
-                  return (
-                    <div
-                      key={f.q}
-                      className="rounded-2xl border border-slate-200 bg-white overflow-hidden transition-all duration-300 hover:border-slate-300 shadow-sm"
-                    >
-                      <button
-                        onClick={() => setOpenFaq(open ? null : i)}
-                        className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-slate-50 transition-colors"
+                  {[
+                    { q: t.faq1q, a: t.faq1a },
+                    { q: t.faq2q, a: t.faq2a },
+                    { q: t.faq3q, a: t.faq3a },
+                    { q: t.faq4q, a: t.faq4a },
+                  ].map((f, i) => {
+                    const open = openFaq === i;
+                    return (
+                      <div
+                        key={f.q}
+                        className="rounded-2xl border border-slate-200 bg-white overflow-hidden transition-all duration-300 hover:border-slate-300 shadow-sm"
                       >
-                        <span className="font-semibold text-slate-800 text-[15px]">{f.q}</span>
-                        {open ? (
-                          <Minus className="h-4 w-4 text-orange-500 transition-transform duration-300" />
-                        ) : (
-                          <Plus className="h-4 w-4 text-slate-400 transition-transform duration-300" />
-                        )}
-                      </button>
-                      <div className={`grid transition-all duration-300 ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
-                        <div className="overflow-hidden">
-                          <p className="px-6 pb-6 text-sm text-slate-500 leading-relaxed">{f.a}</p>
+                        <button
+                          onClick={() => setOpenFaq(open ? null : i)}
+                          className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-slate-50 transition-colors"
+                        >
+                          <span className="font-semibold text-slate-800 text-[15px]">{f.q}</span>
+                          {open ? (
+                            <Minus className="h-4 w-4 text-orange-500 transition-transform duration-300" />
+                          ) : (
+                            <Plus className="h-4 w-4 text-slate-400 transition-transform duration-300" />
+                          )}
+                        </button>
+                        <div
+                          className={`grid transition-all duration-300 ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+                        >
+                          <div className="overflow-hidden">
+                            <p className="px-6 pb-6 text-sm text-slate-500 leading-relaxed">
+                              {f.a}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
                 </div>
               </div>
             </section>
@@ -1836,108 +1880,143 @@ function Index() {
             <footer className="-mx-4 sm:-mx-6 mt-10">
               <div className="section-dark text-neutral-300">
                 <div className="section-shell px-6 sm:px-10 py-12 sm:py-14">
-                <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1.2fr]">
-                  {/* ── Brand column ── */}
-                  <div>
-                    <img src={garoodaLogo} alt="garooda Mobiles" className="h-11 w-auto rounded-lg" />
-                    <p className="mt-5 text-sm leading-relaxed text-neutral-400 max-w-xs">
-                      Tadepalligudem's most trusted mobile & device repair shop — genuine parts,
-                      transparent pricing, and same-day service you can count on.
-                    </p>
-                    <div className="mt-6 flex items-center gap-3">
-                      <a
-                        href="https://www.instagram.com/garoodamobiles_tadepalligudem/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title="Follow us on Instagram"
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300"
-                      >
-                        <Instagram className="h-4.5 w-4.5" />
-                      </a>
-                      <a
-                        href={`https://wa.me/${SHOP_PHONE}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title="WhatsApp"
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 hover:bg-[#25D366] hover:border-[#25D366] hover:text-white transition-all duration-300"
-                      >
-                        <WhatsAppIcon className="h-4.5 w-4.5" />
-                      </a>
-                      <a
-                        href="tel:+918125019015"
-                        title="Call"
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300"
-                      >
-                        <PhoneIcon className="h-4.5 w-4.5" />
-                      </a>
+                  <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1.2fr]">
+                    {/* ── Brand column ── */}
+                    <div>
+                      <img
+                        src={garoodaLogo}
+                        alt="garooda Mobiles"
+                        className="h-11 w-auto rounded-lg"
+                      />
+                      <p className="mt-5 text-sm leading-relaxed text-neutral-400 max-w-xs">
+                        Tadepalligudem's most trusted mobile & device repair shop — genuine parts,
+                        transparent pricing, and same-day service you can count on.
+                      </p>
+                      <div className="mt-6 flex items-center gap-3">
+                        <a
+                          href="https://www.instagram.com/garoodamobiles_tadepalligudem/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="Follow us on Instagram"
+                          className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300"
+                        >
+                          <Instagram className="h-4.5 w-4.5" />
+                        </a>
+                        <a
+                          href={`https://wa.me/${SHOP_PHONE}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="WhatsApp"
+                          className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 hover:bg-[#25D366] hover:border-[#25D366] hover:text-white transition-all duration-300"
+                        >
+                          <WhatsAppIcon className="h-4.5 w-4.5" />
+                        </a>
+                        <a
+                          href="tel:+918125019015"
+                          title="Call"
+                          className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 hover:bg-orange-500 hover:border-orange-500 hover:text-white transition-all duration-300"
+                        >
+                          <PhoneIcon className="h-4.5 w-4.5" />
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* ── Quick links ── */}
+                    <div>
+                      <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-neutral-500 mb-5">
+                        Explore
+                      </h4>
+                      <ul className="space-y-3">
+                        {[
+                          { label: t.navServices, id: "services" },
+                          { label: t.navPricing, id: "pricing" },
+                          { label: t.navReviews, id: "reviews" },
+                          { label: t.navBook, id: "intake-form" },
+                          { label: t.navFaq, id: "faq" },
+                        ].map((link) => (
+                          <li key={link.id}>
+                            <button
+                              onClick={() =>
+                                document
+                                  .getElementById(link.id)
+                                  ?.scrollIntoView({ behavior: "smooth" })
+                              }
+                              className="text-sm text-neutral-400 hover:text-orange-400 transition-colors duration-200"
+                            >
+                              {link.label}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* ── Contact ── */}
+                    <div>
+                      <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-neutral-500 mb-5">
+                        Visit Us
+                      </h4>
+                      <ul className="space-y-4 text-sm text-neutral-400">
+                        <li className="flex items-start gap-3">
+                          <MapPin className="h-4.5 w-4.5 text-orange-500 shrink-0 mt-0.5" />
+                          <span>
+                            Opp-Chennai Shopping Mall,
+                            <br />
+                            Tadepalligudem, Andhra Pradesh
+                          </span>
+                        </li>
+                        <li className="flex items-center gap-3">
+                          <PhoneIcon className="h-4.5 w-4.5 text-orange-500 shrink-0" />
+                          <a
+                            href="tel:+918125019015"
+                            className="hover:text-orange-400 transition-colors"
+                          >
+                            +91 81250 19015
+                          </a>
+                        </li>
+                        <li className="flex items-center gap-3">
+                          <span className="grid place-items-center h-4.5 w-4.5 shrink-0">
+                            <span className="h-2 w-2 rounded-full bg-orange-500 animate-pulse" />
+                          </span>
+                          <span>
+                            Mon–Sun · 10:00 AM – 10:00 PM{" "}
+                            <span className="text-neutral-600">(Tue closed)</span>
+                          </span>
+                        </li>
+                      </ul>
                     </div>
                   </div>
 
-                  {/* ── Quick links ── */}
-                  <div>
-                    <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-neutral-500 mb-5">Explore</h4>
-                    <ul className="space-y-3">
-                      {[
-                        { label: t.navServices, id: "services" },
-                        { label: t.navPricing, id: "pricing" },
-                        { label: t.navReviews, id: "reviews" },
-                        { label: t.navBook, id: "intake-form" },
-                        { label: t.navFaq, id: "faq" },
-                      ].map((link) => (
-                        <li key={link.id}>
-                          <button
-                            onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: "smooth" })}
-                            className="text-sm text-neutral-400 hover:text-orange-400 transition-colors duration-200"
-                          >
-                            {link.label}
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* ── Contact ── */}
-                  <div>
-                    <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-neutral-500 mb-5">Visit Us</h4>
-                    <ul className="space-y-4 text-sm text-neutral-400">
-                      <li className="flex items-start gap-3">
-                        <MapPin className="h-4.5 w-4.5 text-orange-500 shrink-0 mt-0.5" />
-                        <span>Opp-Chennai Shopping Mall,<br />Tadepalligudem, Andhra Pradesh</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <PhoneIcon className="h-4.5 w-4.5 text-orange-500 shrink-0" />
-                        <a href="tel:+918125019015" className="hover:text-orange-400 transition-colors">+91 81250 19015</a>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <span className="grid place-items-center h-4.5 w-4.5 shrink-0"><span className="h-2 w-2 rounded-full bg-orange-500 animate-pulse" /></span>
-                        <span>Mon–Sun · 10:00 AM – 10:00 PM <span className="text-neutral-600">(Tue closed)</span></span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                {/* ── Bottom bar ── */}
-                <div className="mt-12 pt-7 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-5">
-                  <span className="text-xs text-neutral-500 text-center sm:text-left">{t.footerCopy}</span>
-
-                  {/* AK NextGen Solutions studio card */}
-                  <a
-                    href="https://aknextgensolutions.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative inline-flex items-center gap-3.5 rounded-2xl border border-white/10 bg-white/[0.04] pl-2.5 pr-4 py-2.5 hover:border-orange-400/40 hover:bg-white/[0.07] transition-all duration-300"
-                  >
-                    <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 text-white font-extrabold text-sm tracking-tight shadow-lg shadow-orange-500/25">
-                      AK
-                      <Sparkles className="absolute -top-1 -right-1 h-3.5 w-3.5 text-amber-300 fill-amber-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* ── Bottom bar ── */}
+                  <div className="mt-12 pt-7 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-5">
+                    <span className="text-xs text-neutral-500 text-center sm:text-left">
+                      {t.footerCopy}
                     </span>
-                    <span className="flex flex-col items-start text-left">
-                      <span className="text-[9px] uppercase tracking-[0.22em] font-bold text-neutral-500">{t.footerDev}</span>
-                      <span className="text-sm font-extrabold tracking-tight text-orange-300 leading-tight">{t.footerDevLink}</span>
-                    </span>
-                    <ArrowRight className="h-4 w-4 text-neutral-500 group-hover:text-orange-400 transition-all duration-300 group-hover:translate-x-0.5" />
-                  </a>
-                </div>
+
+                    {/* AK NextGen Solutions studio card */}
+                    <a
+                      href="https://aknextgensolutions.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative inline-flex items-center gap-3.5 rounded-2xl border border-white/10 bg-white/[0.04] pl-2.5 pr-4 py-2.5 hover:border-orange-400/40 hover:bg-white/[0.07] transition-all duration-300"
+                    >
+                      <span className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white p-1.5 shadow-lg shadow-black/25 ring-1 ring-white/10">
+                        <img
+                          src={akNextgenLogo}
+                          alt="AK NextGen Solutions logo"
+                          className="h-full w-full object-contain"
+                        />
+                      </span>
+                      <span className="flex flex-col items-start text-left">
+                        <span className="text-[9px] uppercase tracking-[0.22em] font-bold text-neutral-500">
+                          {t.footerDev}
+                        </span>
+                        <span className="text-sm font-extrabold tracking-tight text-orange-300 leading-tight">
+                          {t.footerDevLink}
+                        </span>
+                      </span>
+                      <ArrowRight className="h-4 w-4 text-neutral-500 group-hover:text-orange-400 transition-all duration-300 group-hover:translate-x-0.5" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </footer>
@@ -1950,7 +2029,10 @@ function Index() {
                 role="dialog"
                 aria-modal="true"
               >
-                <div className="relative w-[400px] max-w-[92vw]" onClick={(e) => e.stopPropagation()}>
+                <div
+                  className="relative w-[400px] max-w-[92vw]"
+                  onClick={(e) => e.stopPropagation()}
+                >
                   <div className="flex items-center justify-between mb-3">
                     <span className="inline-flex items-center gap-2 text-white/90 text-sm font-semibold">
                       <Instagram className="h-4 w-4" /> garooda Mobiles
@@ -1991,7 +2073,9 @@ function Index() {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               aria-label="Scroll to top"
               className={`fixed bottom-24 right-5 z-[60] inline-flex h-11 w-11 items-center justify-center rounded-full bg-white text-orange-600 border border-slate-200 shadow-[0_10px_30px_-8px_rgba(0,0,0,0.28)] hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer ${
-                showScrollTop ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-3 pointer-events-none"
+                showScrollTop
+                  ? "opacity-100 translate-y-0 pointer-events-auto"
+                  : "opacity-0 translate-y-3 pointer-events-none"
               }`}
             >
               <ChevronUp className="h-5 w-5" />
@@ -2014,7 +2098,6 @@ function Index() {
                 <WhatsAppIcon className="relative h-7 w-7" />
               </span>
             </a>
-
           </>
         ) : (
           /* TECHNICIAN PORTAL */
@@ -2022,8 +2105,12 @@ function Index() {
             {/* ── Dashboard header ── */}
             <div className="section-dark rounded-3xl px-7 py-8 sm:px-10 sm:py-9 mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5">
               <div>
-                <span className="eyebrow" style={{ color: "#fb923c" }}>{t.techSystem}</span>
-                <h1 className="mt-3 font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">{t.techTitle}</h1>
+                <span className="eyebrow" style={{ color: "#fb923c" }}>
+                  {t.techSystem}
+                </span>
+                <h1 className="mt-3 font-display text-3xl sm:text-4xl font-bold tracking-tight text-white">
+                  {t.techTitle}
+                </h1>
                 <p className="text-neutral-400 text-sm mt-2">{t.techSubtitle}</p>
               </div>
               <button
@@ -2041,14 +2128,22 @@ function Index() {
             <div className="grid lg:grid-cols-3 gap-6">
               <div className="space-y-6">
                 <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.15)]">
-                  <h3 className="text-[11px] uppercase tracking-[0.18em] text-neutral-400 font-bold mb-4">{t.benchMetrics}</h3>
+                  <h3 className="text-[11px] uppercase tracking-[0.18em] text-neutral-400 font-bold mb-4">
+                    {t.benchMetrics}
+                  </h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="rounded-xl bg-neutral-900 p-5 text-center">
-                      <span className="text-[10px] text-neutral-400 uppercase tracking-wider font-bold">{t.totalTickets}</span>
-                      <span className="font-display font-bold text-white text-4xl mt-1.5 block">{tickets.length}</span>
+                      <span className="text-[10px] text-neutral-400 uppercase tracking-wider font-bold">
+                        {t.totalTickets}
+                      </span>
+                      <span className="font-display font-bold text-white text-4xl mt-1.5 block">
+                        {tickets.length}
+                      </span>
                     </div>
                     <div className="rounded-xl bg-orange-500 p-5 text-center">
-                      <span className="text-[10px] text-white/80 uppercase tracking-wider font-bold">{t.inProgress}</span>
+                      <span className="text-[10px] text-white/80 uppercase tracking-wider font-bold">
+                        {t.inProgress}
+                      </span>
                       <span className="font-display font-bold text-white text-4xl mt-1.5 block">
                         {tickets.filter((tk) => tk.status !== "Ready for Delivery").length}
                       </span>
@@ -2057,22 +2152,33 @@ function Index() {
                 </div>
 
                 <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.15)]">
-                  <h3 className="text-[11px] uppercase tracking-[0.18em] text-neutral-400 font-bold mb-4">{t.slaTimeline}</h3>
+                  <h3 className="text-[11px] uppercase tracking-[0.18em] text-neutral-400 font-bold mb-4">
+                    {t.slaTimeline}
+                  </h3>
                   <ul className="space-y-1">
                     {t.slaSteps.map((sla, i) => (
-                      <li key={sla.step} className="flex justify-between items-center gap-3 text-sm py-2.5 border-b border-neutral-100 last:border-0">
+                      <li
+                        key={sla.step}
+                        className="flex justify-between items-center gap-3 text-sm py-2.5 border-b border-neutral-100 last:border-0"
+                      >
                         <span className="flex items-center gap-2.5 text-neutral-700 font-medium">
-                          <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-orange-100 text-orange-600 text-[10px] font-bold">{i + 1}</span>
+                          <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-orange-100 text-orange-600 text-[10px] font-bold">
+                            {i + 1}
+                          </span>
                           {sla.step.replace(/^\d+\.\s*/, "")}
                         </span>
-                        <span className="text-xs text-neutral-400 font-medium text-right">{sla.time}</span>
+                        <span className="text-xs text-neutral-400 font-medium text-right">
+                          {sla.time}
+                        </span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
                 <div className="rounded-2xl border border-orange-100 bg-orange-50/70 p-6">
-                  <h3 className="text-[11px] uppercase tracking-[0.18em] text-orange-700 font-bold mb-2.5">{t.waCrmGuide}</h3>
+                  <h3 className="text-[11px] uppercase tracking-[0.18em] text-orange-700 font-bold mb-2.5">
+                    {t.waCrmGuide}
+                  </h3>
                   <p className="text-xs text-neutral-500 leading-relaxed mb-4">{t.waCrmBody}</p>
                   <ul className="space-y-2.5 text-xs text-neutral-700">
                     {[
@@ -2104,101 +2210,127 @@ function Index() {
                   tickets.map((tk) => {
                     const isDone = tk.status === "Ready for Delivery";
                     return (
-                    <div key={tk.id} className="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.15)]">
-                      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-neutral-100 pb-5 mb-5">
-                        <div>
-                          <div className="flex items-center gap-2.5">
-                            <span className="text-[10px] uppercase tracking-wider bg-neutral-900 px-2.5 py-1 rounded-md text-white font-bold font-display">
-                              {tk.id}
-                            </span>
-                            <span className={`inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md ${isDone ? "bg-green-50 text-green-600 border border-green-200" : "bg-orange-50 text-orange-600 border border-orange-200"}`}>
-                              <span className={`h-1.5 w-1.5 rounded-full ${isDone ? "bg-green-500" : "bg-orange-500 animate-pulse"}`} />
-                              {tk.status}
-                            </span>
-                          </div>
-                          <h3 className="font-display text-xl font-bold mt-2.5 text-neutral-900">{tk.model}</h3>
-                          <p className="text-xs text-neutral-400 mt-1">
-                            {t.client}: <span className="font-semibold text-neutral-600">{tk.name}</span> · {t.registered}: {tk.createdAt}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* status stepper */}
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {STEPS.map((step) => {
-                          const isCurrent = tk.status === step.name;
-                          return (
-                            <button
-                              key={step.name}
-                              onClick={() => handleUpdateTicket(tk.id, { status: step.name })}
-                              className={`px-3.5 py-1.5 rounded-lg text-[10px] font-bold tracking-wide uppercase transition-all duration-200 ${
-                                isCurrent
-                                  ? "bg-orange-500 text-white shadow-sm shadow-orange-500/30"
-                                  : "bg-neutral-100 text-neutral-400 hover:text-neutral-700 hover:bg-neutral-200"
-                              }`}
-                            >
-                              {step.name.split(" ")[0]}
-                            </button>
-                          );
-                        })}
-                      </div>
-
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div className="space-y-4">
+                      <div
+                        key={tk.id}
+                        className="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.15)]"
+                      >
+                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-neutral-100 pb-5 mb-5">
                           <div>
-                            <span className="text-[10px] text-neutral-400 uppercase block font-bold tracking-widest mb-1.5">{t.intakeRequestIssue}</span>
-                            <div className="rounded-xl border border-neutral-100 bg-neutral-50 p-4 text-sm text-neutral-700 font-medium">
-                              {tk.issue}
+                            <div className="flex items-center gap-2.5">
+                              <span className="text-[10px] uppercase tracking-wider bg-neutral-900 px-2.5 py-1 rounded-md text-white font-bold font-display">
+                                {tk.id}
+                              </span>
+                              <span
+                                className={`inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md ${isDone ? "bg-green-50 text-green-600 border border-green-200" : "bg-orange-50 text-orange-600 border border-orange-200"}`}
+                              >
+                                <span
+                                  className={`h-1.5 w-1.5 rounded-full ${isDone ? "bg-green-500" : "bg-orange-500 animate-pulse"}`}
+                                />
+                                {tk.status}
+                              </span>
+                            </div>
+                            <h3 className="font-display text-xl font-bold mt-2.5 text-neutral-900">
+                              {tk.model}
+                            </h3>
+                            <p className="text-xs text-neutral-400 mt-1">
+                              {t.client}:{" "}
+                              <span className="font-semibold text-neutral-600">{tk.name}</span> ·{" "}
+                              {t.registered}: {tk.createdAt}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* status stepper */}
+                        <div className="flex flex-wrap gap-2 mb-6">
+                          {STEPS.map((step) => {
+                            const isCurrent = tk.status === step.name;
+                            return (
+                              <button
+                                key={step.name}
+                                onClick={() => handleUpdateTicket(tk.id, { status: step.name })}
+                                className={`px-3.5 py-1.5 rounded-lg text-[10px] font-bold tracking-wide uppercase transition-all duration-200 ${
+                                  isCurrent
+                                    ? "bg-orange-500 text-white shadow-sm shadow-orange-500/30"
+                                    : "bg-neutral-100 text-neutral-400 hover:text-neutral-700 hover:bg-neutral-200"
+                                }`}
+                              >
+                                {step.name.split(" ")[0]}
+                              </button>
+                            );
+                          })}
+                        </div>
+
+                        <div className="grid md:grid-cols-2 gap-6">
+                          <div className="space-y-4">
+                            <div>
+                              <span className="text-[10px] text-neutral-400 uppercase block font-bold tracking-widest mb-1.5">
+                                {t.intakeRequestIssue}
+                              </span>
+                              <div className="rounded-xl border border-neutral-100 bg-neutral-50 p-4 text-sm text-neutral-700 font-medium">
+                                {tk.issue}
+                              </div>
+                            </div>
+                            <div>
+                              <span className="text-[10px] text-neutral-400 uppercase block font-bold tracking-widest mb-1.5">
+                                {t.benchNotes}
+                              </span>
+                              <textarea
+                                value={tk.notes}
+                                onChange={(e) =>
+                                  handleUpdateTicket(tk.id, { notes: e.target.value })
+                                }
+                                placeholder={t.benchNotesPlaceholder}
+                                className="w-full rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-sm text-neutral-700 placeholder:text-neutral-300 focus:border-orange-500 focus:outline-none focus:ring-4 focus:ring-orange-500/10 transition resize-none h-24"
+                              />
                             </div>
                           </div>
-                          <div>
-                            <span className="text-[10px] text-neutral-400 uppercase block font-bold tracking-widest mb-1.5">{t.benchNotes}</span>
-                            <textarea
-                              value={tk.notes}
-                              onChange={(e) => handleUpdateTicket(tk.id, { notes: e.target.value })}
-                              placeholder={t.benchNotesPlaceholder}
-                              className="w-full rounded-xl border border-neutral-200 bg-neutral-50 p-4 text-sm text-neutral-700 placeholder:text-neutral-300 focus:border-orange-500 focus:outline-none focus:ring-4 focus:ring-orange-500/10 transition resize-none h-24"
-                            />
-                          </div>
-                        </div>
 
-                        <div className="space-y-4">
-                          <div>
-                            <span className="text-[10px] text-neutral-400 uppercase block font-bold tracking-widest mb-1.5">{t.costEstimate}</span>
-                            <input
-                              type="text"
-                              value={tk.cost}
-                              onChange={(e) => handleUpdateTicket(tk.id, { cost: e.target.value })}
-                              placeholder={t.costPlaceholder}
-                              className="w-full rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-700 placeholder:text-neutral-300 focus:border-orange-500 focus:outline-none focus:ring-4 focus:ring-orange-500/10 transition"
-                            />
-                          </div>
+                          <div className="space-y-4">
+                            <div>
+                              <span className="text-[10px] text-neutral-400 uppercase block font-bold tracking-widest mb-1.5">
+                                {t.costEstimate}
+                              </span>
+                              <input
+                                type="text"
+                                value={tk.cost}
+                                onChange={(e) =>
+                                  handleUpdateTicket(tk.id, { cost: e.target.value })
+                                }
+                                placeholder={t.costPlaceholder}
+                                className="w-full rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-700 placeholder:text-neutral-300 focus:border-orange-500 focus:outline-none focus:ring-4 focus:ring-orange-500/10 transition"
+                              />
+                            </div>
 
-                          <div className="rounded-xl border border-neutral-100 bg-neutral-50 p-4">
-                            <span className="text-[10px] text-neutral-400 block font-bold uppercase tracking-widest mb-2.5">{t.waOps}</span>
-                            <div className="flex gap-2">
-                              <button
-                                onClick={() => handleSendWhatsAppUpdate(tk)}
-                                className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs py-3 px-4 transition active:scale-[0.98]"
-                              >
-                                <WhatsAppIcon className="h-4 w-4" />
-                                {t.sendAlert}
-                              </button>
-                              <button
-                                onClick={() => {
-                                  const updated = tickets.filter((x) => x.id !== tk.id);
-                                  setTickets(updated);
-                                  localStorage.setItem("garooda_tickets", JSON.stringify(updated));
-                                }}
-                                className="rounded-xl border border-red-200 bg-red-50 hover:bg-red-100 text-red-500 font-bold text-xs py-3 px-4.5 transition"
-                              >
-                                {t.removeTicket}
-                              </button>
+                            <div className="rounded-xl border border-neutral-100 bg-neutral-50 p-4">
+                              <span className="text-[10px] text-neutral-400 block font-bold uppercase tracking-widest mb-2.5">
+                                {t.waOps}
+                              </span>
+                              <div className="flex gap-2">
+                                <button
+                                  onClick={() => handleSendWhatsAppUpdate(tk)}
+                                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs py-3 px-4 transition active:scale-[0.98]"
+                                >
+                                  <WhatsAppIcon className="h-4 w-4" />
+                                  {t.sendAlert}
+                                </button>
+                                <button
+                                  onClick={() => {
+                                    const updated = tickets.filter((x) => x.id !== tk.id);
+                                    setTickets(updated);
+                                    localStorage.setItem(
+                                      "garooda_tickets",
+                                      JSON.stringify(updated),
+                                    );
+                                  }}
+                                  className="rounded-xl border border-red-200 bg-red-50 hover:bg-red-100 text-red-500 font-bold text-xs py-3 px-4.5 transition"
+                                >
+                                  {t.removeTicket}
+                                </button>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
                     );
                   })
                 )}
@@ -2223,21 +2355,31 @@ function SectionHeader({
   align?: "left" | "center";
 }) {
   return (
-    <div className={`mb-12 ${align === "center" ? "mx-auto max-w-2xl text-center flex flex-col items-center" : "max-w-2xl"}`}>
+    <div
+      className={`mb-12 ${align === "center" ? "mx-auto max-w-2xl text-center flex flex-col items-center" : "max-w-2xl"}`}
+    >
       <span className="eyebrow">{eyebrow}</span>
       <h2 className="mt-4 font-display text-4xl sm:text-5xl font-bold tracking-tight text-neutral-900 leading-[1.04]">
         {title}
       </h2>
-      {subtitle && (
-        <p className="mt-4 text-neutral-500 text-base leading-relaxed">{subtitle}</p>
-      )}
+      {subtitle && <p className="mt-4 text-neutral-500 text-base leading-relaxed">{subtitle}</p>}
     </div>
   );
 }
 
 const REPAIR_BRANDS = [
-  "Apple", "Samsung", "OnePlus", "Xiaomi", "OPPO", "vivo",
-  "Realme", "Motorola", "Google Pixel", "Nothing", "iQOO", "Nokia",
+  "Apple",
+  "Samsung",
+  "OnePlus",
+  "Xiaomi",
+  "OPPO",
+  "vivo",
+  "Realme",
+  "Motorola",
+  "Google Pixel",
+  "Nothing",
+  "iQOO",
+  "Nokia",
 ];
 
 function BrandMarquee() {
